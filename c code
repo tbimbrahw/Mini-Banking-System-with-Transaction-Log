@@ -1,0 +1,121 @@
+#include stdio.h
+#include string.h
+#include stdlib.h
+#include ctype.h
+
+#define MAX_ACCOUNTS 100
+
+struct account
+{
+    char name[50];
+    int long account_number;
+    long double balance;
+}
+
+struct account a[MAX_ACCOUNTS];
+int total_accounts = 0;
+
+void create_acc();
+void deposit();
+void withdraw();
+void save_to_file();
+void create_transaction_log();
+void view_acc_summary();
+void search_acc();
+void display_previous_transactions();
+void update_acc();
+void load_from_file();
+void clear_buffer();
+void display_menu();
+
+int main()
+{
+    int choice;
+    load_from_file();
+
+    while(1)
+    {
+        display_menu();
+        printf("enter your choice (1-10): ");
+        scanf("%d", &choice);
+        if(choice)!=1)
+        {
+            clear_buffer();
+            printf("Error: Invalid Input! Please enter a valid number.\n");
+            continue;
+        }
+        clear_buffer();
+        
+        switch(choice)
+        {
+            case 1:
+                create_acc();
+                break;
+
+            case 2:
+                deposit();
+                break;
+
+            case 3:
+                withdraw();
+                break;
+            
+            case 4:
+                save_to_file();
+                printf("Data saved to a file successfully!\n");
+                break;
+                
+            case 5:
+                create_transaction_log();
+                break;
+            
+            case 5:
+                view_acc_summary();
+                break;
+            
+            case 6:
+                search_acc();
+                break;
+            
+            case 7:
+                display_previous_transactions();
+                break;
+            
+            case 8:
+                update_acc();
+                break;
+            
+            case 9:
+                isplay_menu();
+                break;
+            
+            case 10:
+                save_to_file();
+                printf("You have exited the mini banking system.");
+                exit(0);
+            
+            default:
+                printf("error: Invalid Choice!! Enter a valid number.\n");
+        }
+    }
+
+    return(0);
+}
+
+void display_menu()
+{
+    printf("\t\t\t Menu \n");
+    printf("1.  Create new account\n");
+    printf("2.  Add a deposit in account\n");    printf("3.  Withdraw from account \n ");
+    printf("4.  Save data to file\n");
+    printf("5.  Create a transaction log\n");
+    printf("6.  View account summary \n");
+    printf("8.  Update account details \n");
+    printf("9.  Display menu\n");
+    printf("10. Exit\n");
+}
+
+void clear_buffer()
+{
+    
+}
