@@ -117,5 +117,61 @@ void display_menu()
 
 void clear_buffer()
 {
-    
+    int c;
+    while((c= getchar()) != '\n' && c != EOF);   
 }
+
+void create_acc()
+{
+    if(total_accounts>= MAX_ACCOUNTS)
+    {
+        printf("ERROR: Maximum accounts capacity (100) reached!\n");
+        return;
+    }
+
+  struct account new_account;
+  int i;
+
+  printf("\n\tAdd New Account\n");
+  printf("Enter the account number: ");
+  scanf("%d", &new_account.account_number);
+  
+  if((new_student.account_number)!=1)
+  {
+    print("ERROR: Invalid account number!\n");
+    clear_buffer();
+    return;
+  }
+  clear_buffer();
+
+  for(i=0,i<total_accounts,i++)
+  {
+    if(a[i].account_number == new_account.account_number)
+        {
+            printf("ERROR: Account with this account number already exists!\n");
+            return;
+        }
+  }
+
+  printf("Enter name of account holder: ");
+  fgets(new_account.name,20,stdin);
+  new_account.name[strcspn(new_account.name,"\n")]=0;
+
+   if(strlen(new_account.name) == 0)
+    {
+        printf("ERROR: Name cannot be empty!\n");
+        return;
+    }
+
+    printf("enter the balance in account: ");
+    scanf("%Lf", &new_account.balance);
+    
+    clear_buffer();
+    
+    a[total_accounts] = new_account;
+    total_accounts++;
+    
+    printf("Account added successfully!\n");
+}
+
+
